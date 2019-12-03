@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Attr</title>
+    <style>
+/*        a[target] {
+            background-color: yellow;
+        }
+        a[target=_blank] { 
+            background-color: red;
+}*/
+       a[href$=".org"]{
+         color: yellow;
+       }
+       a[id] {
+        color: red;
+       }
+       a[href="#"] {
+        color: green;
+       }
+    </style>
+</head>
+<body>
+
+    <p>The links</p>
+
+    <a href="#" target="_top">w3schools.com</a>
+    <a id="a1" href="http://www.google.com" target="_blank">google.com</a>
+    <a href="http://www.wikipedia.org" target="_self">wikipedia.org</a>
+</body>
+</html>

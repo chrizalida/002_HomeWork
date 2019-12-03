@@ -1,0 +1,62 @@
+<!-- 
+    Перепишите все селекторы из первой папки 001_CSS_Selectors с помощью известных Вам методов и свойств.
+    В примере с классом добавьте к существующем классу, класс с именем newclass, а также выведите в консоль окне все стили что есть у элемента с этим классом
+    В примере с индентификатором добавьте свойства marginTop с значением 10px и background с значением red
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Id and classes</title>
+    <style>
+        .class1 {
+            color: blue;
+            font-size: 14px;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+  <h1 class="class1" id="id1">Title</h1>
+  <div>
+     <p class="class1" id="id2">Это текст</p>  
+  </div>
+  <button onclick="LoadSt()">Добавить класс</button>
+  <button onclick="SetAt()">Добавить атрибуты</button>
+
+  <script type="text/javascript">
+    function LoadSt() {
+      var url="newclass.css";
+      var link= document.createElement("link"); 
+        link.rel = "stylesheet"; 
+        link.type = "text/css";
+        link.href = url;
+     var head = document.getElementsByTagName("head")[0]; 
+         head.appendChild(link);
+
+     var selnode= document.getElementById("id1");
+        selnode.classList.add("newclass");
+     var attrs=selnode.attributes;
+     for (var i =0; i<attrs.length; i++) {     
+        console.log(attrs[i].name+ '='+attrs[i].value); 
+      }  
+      var st = selnode.style;
+      var cs = window. getComputedStyle(selnode,null);
+      var len= cs.length;
+      for (var i = 0; i < len; i++) {
+          var style = cs[i];
+          console. log(style+" : " + cs.getPropertyValue(style));
+      }
+     var sel = document.getElementById("id2");
+    } 
+  </script>
+
+   <script type="text/javascript">
+     function SetAt() {  
+       var selnode= document.getElementById("id2"); 
+           selnode.style.backgroundColor= "red";
+           selnode.style.marginTop="100px";
+    }
+</script>
+
+</body>
+</html>

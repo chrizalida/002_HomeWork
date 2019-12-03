@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Classwork</title>
+    <style type="text/css">
+    	#one {
+    		width: 700px;
+    		height: 700px;
+    		border: 1px solid #000;
+    		float: left;
+    		
+    	}
+    	.newclass {
+    	   width: 350px;
+    		height: 350px;
+    		border: 10px solid #000;
+    		float: left;	
+    	}
+    </style>
+</head>
+<body>
+    <div id="one" onclick="CreateDiv('one','two','two',0)">one</div> 
+    <script>
+      function CreateDiv(id,newid,txt,op) {
+         var divs = document.getElementById(id);
+          	 newdiv = document.createElement("div");
+          	 newdiv.id = newid;
+          	 newdiv.classList.add("newclass");
+          	switch (op){
+          	 case 0: 	
+          	  newdiv.innerHTML=txt;          
+          	  var f= function(){
+          	  CreateDiv('two','two_first','two_first',1)}
+              newdiv.addEventListener("click", f);
+          	  divs.insertAdjacentElement('afterEnd',newdiv);
+          	 break;
+          	  case 1:
+          	   divs.id="two_second";
+          	   var nid=document.getElementById(divs.id);
+          	   newdiv.innerHTML=txt;   
+               divs.insertAdjacentElement('afterEnd',newdiv);
+             break;
+          	}
+       }
+    // Добавьте после дива с id=one еще один див с текстом two и id=two
+    // На клик по id=two добавьте перед ним див с id - two_first, а див с id=two измените на two_second 
+    </script>
+</body>
+</html>
