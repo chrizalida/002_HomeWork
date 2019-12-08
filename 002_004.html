@@ -16,12 +16,10 @@
             background: #ff0000;
         }*/
         .intro .outro {
-             background-color: green;
              font-size: 14pt;
              font-family: verdana;
         } 
         div.indiv p#outp {
-             background-color: red;
              font-size: 12pt;
              font-family: courier;
         } 
@@ -32,23 +30,23 @@
     <h1>Главная</h1>
 
     <div class="indiv">
-        <h2>Заголовок</h2>
+        <h2 name = "header">Заголовок</h2>
         <p id="outp">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, quas, officiis soluta, eligendi perspiciatis dolore inventore consequuntur possimus dolores cupiditate provident id repudiandae consequatur nobis veniam, excepturi impedit consectetur eos!</p>
     </div>
 
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, quas, officiis soluta, eligendi perspiciatis dolore inventore consequuntur possimus dolores cupiditate provident id repudiandae consequatur nobis veniam, excepturi impedit consectetur eos!</p>
 
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, quas, officiis soluta, eligendi perspiciatis dolore inventore consequuntur possimus dolores cupiditate provident id repudiandae consequatur nobis veniam, excepturi impedit consectetur eos!</p>
-    <span>Строк </span>
+    <span class ="intro">Строк </span>
 
     <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero praesentium quasi laudantium ipsam. Aperiam dicta sunt pariatur repudiandae minima, cum cumque minus blanditiis voluptate quaerat reiciendis a magni quos impedit?</div>
     <div class="intro">
       <ul class="outro">
-        <li>class="outro"Чай</li>
-        <li>class="outro"Кофе</li>
-        <li>class="outro"Молоко</li>
+        <li class="outro">Чай</li>
+        <li class="outro">Кофе</li>
+        <li class="outro">Молоко</li>
       </ul>
-    </div>div>
+    </div>
 
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi minima perspiciatis dolor cumque quo eum molestias necessitatibus ipsam dolorum molestiae inventore atque iure recusandae fugiat fugit beatae ad nemo, totam.</p>
     <ul>
@@ -63,5 +61,73 @@
         <li>Чай</li>
         <li>Молоко</li>
     </ul>
+    <div>
+      <button onclick="addDesign()" style="position:relative;left:10px;width:200px;height:25px;top:10px";>Обновить дизайн</button>
+   </div>
+<script type="text/javascript">   
+        function addDesign(){
+          var head = document.getElementsByTagName("h1");
+              head[0].style.color = "#C057FF";
+              head[0].style.padding = "10px";
+              head[0].style.height = "50px";
+              head[0].style.textAlign = "center";
+              head[0].style.lineHeight = "50px";
+
+             getStyleofElement(head[0]); 
+
+          var uls = document.getElementsByTagName("ul");
+          for (var i = 0; i < uls.length; i++) {
+             if (uls[i].classList.contains("outro")) {
+              uls[i].style.listStyleType="square"
+              uls[i].style.listStylePosition = "inside";
+              uls[i].style.color = "green";
+              getStyleofElement(uls[i]); 
+             }
+             else {
+              uls[i].style.listStyleType="decimal"
+              uls[i].style.listStylePosition = "outside";  
+              uls[i].style.color = "red";
+              uls[i].style.fontSize = "14pt";
+             }
+          }
+
+          var  pp = document.querySelectorAll("p");
+          for (var i = 0; i < pp.length; i++) {
+              if (pp[i].id!=""){
+                    pp[i].classList.add("outro"); 
+                    pp[i].style.fontSize="24px";
+                    pp[i].style.color="coral";
+                    pp[i].style.textAlign = "center";   
+              }
+              else {
+                    pp[i].style.fontSize="20px";
+                    pp[i].style.color="#46FF00";
+              }
+          }
+         
+         var header = document.getElementsByName("header");
+              header[header.length-1].style.textAlign = "center";
+              header[header.length-1].style.lineHeight = "50px";
+              getStyleofElement(header[header.length-1]);
+
+         var elem = document.getElementsByClassName("intro");
+           for (var i = 0; i < elem.length; i++) {
+             if (elem[i].nodeName==="SPAN"){
+                 elem[i].style.fontSize="30px";
+                 elem[i].style.color="#00FFFF";
+                 getStyleofElement(elem[i]);
+             }
+           }
+        function getStyleofElement(param) {
+          var cs=window.getComputedStyle(param, null ); 
+          for (var i = 0; i < cs.length; i++) {
+                 var style = cs[i];
+                 console.log("Аргументы стиля элемента:"+param.nodeName);
+                 console. log(style+" : " + cs.getPropertyValue(style));
+          }
+        }
+    }
+
+    </script>    
 </body>
 </html>
