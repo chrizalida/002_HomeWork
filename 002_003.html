@@ -25,22 +25,59 @@
         font-family: courier; 
     }
 
-    a[href^="#"] {
-        color: purple;
-        font-size: 16pt;
-        font-style: italic;
+    a[href*="link"] {
+        color: blue;
     }
     </style>
 </head>
 <body>
-    <h1 class="class1" id="id1">Title</h1>
-    <div id="footer">
-     <div>
+    <h1 name="header">Title</h1>
+    <div>
+     <div id="footer">
         <span class="tel"> 
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco <span>SECOND SPAN</span> laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco <span class="inner">SECOND SPAN</span> laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
         </span>
      </div>
     </div>
     <a href="#">Link</a>
+    <div>
+      <button onclick="addDesign()" style="position:relative;left:10px;width:200px;height:25px;top:10px";>Обновить дизайн</button>
+   </div>
+    <script type="text/javascript">   
+        function addDesign(){     
+          var div = document.getElementById("footer");
+          var innerElem = div.querySelectorAll(":scope .tel .inner");
+          for (var i = 0; i < innerElem.length; i++) {
+             innerElem[i].style.color="magenta";
+             innerElem[i].style.fontFamily = "Verdana";
+             innerElem[i].style.fontStyle = "italic";
+             innerElem[i].style.textTransform = "uppercase";  
+             getStyleofElement(innerElem[i]);           
+          } 
+
+           var head =  document.getElementsByName("header"); 
+               head[0].style.textDecoration = "underline";
+               head[0].style.textAlign = "center";
+               head[0].style.fontSize = "22px";
+               head[0].style.color = "rgb("+parseInt(Math.random()*254)+","+parseInt(Math.random()*254)+","+parseInt(Math.random()*254)+")";  
+              console.log(head[0].tagName+": это заголовок!"); 
+    
+           var links =  document.getElementsByTagName("a"); 
+            for (var i = 0; i < links.length; i++) {
+                 links[i].style.color="#00C024";
+                 links[i].style.fontSize = "20px";
+            }
+            
+        function getStyleofElement(param) {
+          var cs=window.getComputedStyle(param, null ); 
+          for (var i = 0; i < cs.length; i++) {
+                 var style = cs[i];
+                 console.log("Аргументы стиля элемента:"+param.nodeName);
+                 console. log(style+" : " + cs.getPropertyValue(style));
+          }
+        }
+     }
+      
+    </script>    
 </body>
 </html>
