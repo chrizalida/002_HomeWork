@@ -11,7 +11,7 @@
             background-color: red;
 }*/
        a[href$=".org"]{
-         color: yellow;
+         color: purple;
        }
        a[id] {
         color: red;
@@ -20,13 +20,53 @@
         color: green;
        }
     </style>
+
 </head>
 <body>
+   <div>
+     <p name="Параграф">The links</p>
+   </div>
+   <div class="intro" id="div"> 
+     <a href="#" target="_top">w3schools.com</a>
+     <a id="a1" href="http://www.google.com" target="_blank">google.com</a>
+     <a href="http://www.wikipedia.org" target="_self">wikipedia.org</a>
+   </div>
+   <div>
+      <button onclick="addDesign()" style="position:relative;left:10px;width:200px;height:25px;top:10px";>Обновить дизайн</button>
+   </div>
+<script type="text/javascript">   
+        function addDesign(){
+          var pp = document.querySelector("p"); 
+             pp.style.color="blue";
+             pp.style.fontFamily = "courier";
+             pp.style.fontStyle = "oblique";
+             letterSpacing = "1em";  
 
-    <p>The links</p>
-
-    <a href="#" target="_top">w3schools.com</a>
-    <a id="a1" href="http://www.google.com" target="_blank">google.com</a>
-    <a href="http://www.wikipedia.org" target="_self">wikipedia.org</a>
+             getStyleofElement(pp); 
+             
+          var container = document.querySelector("#div");
+          var links = container.querySelectorAll("div.intro > a");   
+          for (var i = 0; i < links.length; i++) {
+            if (links[i].id =="a1"){
+                links[i].style.textTransform="uppercase";
+                links[i].style.fontFamily="verdana";
+            }
+            else {
+                links[i].style.textTransform="capitalize";
+                links[i].style.fontStyle = "italic";
+                links[i].style.fontWeight = "700";
+            }                
+          }      
+      }
+      
+        function getStyleofElement(param) {
+          var cs=window.getComputedStyle(param, null ); 
+          for (var i = 0; i < cs.length; i++) {
+                 var style = cs[i];
+                 console.log("Аргументы стиля элемента:"+param.nodeName);
+                 console. log(style+" : " + cs.getPropertyValue(style));
+          }
+        }
+    </script>    
 </body>
 </html>
